@@ -4,19 +4,11 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import { login, logout } from '../../redux/loginSlice';
 import { RootState } from '../../redux/store';
-import {
-  initGoogleClient,
-  handleGoogleSignIn,
-  handleGoogleLogout,
-} from '../CalendarManagement/GoogleCalendarAuth';
 
 const Header = () => {
   const navigate = useNavigate();
   const loginState = useSelector((state: RootState) => state.auth.login);
   const dispatch = useDispatch();
-
-  // Google 로그인 상태 추적
-  const [googleLogin, setGoogleLogin] = useState(false);
 
   // 기존 로그인 상태를 토글하는 함수
   const handleLogin = (value: boolean) => {
@@ -25,12 +17,6 @@ const Header = () => {
     } else {
       dispatch(logout());
     }
-  };
-
-  // Google 로그인 성공 시 호출되는 함수
-  const handleGoogleLoginSuccess = () => {
-    setGoogleLogin(true); // 구글 로그인 상태 업데이트
-    handleLogin(true); // Redux 상태 업데이트 (로그인 성공)
   };
 
   // 기존 로그인 토큰 받아오기
@@ -43,7 +29,7 @@ const Header = () => {
       if (response.status === 200 && response.data.message === 'success') {
         const token = response.data.cookie;
         localStorage.setItem('authToken', token); // 토큰 저장
-        handleGoogleSignIn(handleGoogleLoginSuccess); // 구글 로그인도 처리
+        handleLogin(true);
       }
     } catch (error) {
       console.error('로그인 토큰을 가져오는 도중 에러 발생:', error);
@@ -53,8 +39,6 @@ const Header = () => {
   // 로그아웃 처리 함수
   const handleLogout = () => {
     localStorage.removeItem('authToken'); // 로컬 토큰 삭제
-    handleGoogleLogout(); // 구글 로그아웃도 처리
-    setGoogleLogin(false); // 구글 로그인 상태 초기화
     handleLogin(false); // Redux 상태 업데이트 (로그아웃)
   };
 
@@ -64,7 +48,6 @@ const Header = () => {
     if (token) {
       handleLogin(true); // 토큰이 있으면 로그인 상태로 설정
     }
-    initGoogleClient(handleGoogleLoginSuccess); // 구글 클라이언트 초기화
   }, []);
 
   const clickLogo = () => {
@@ -93,10 +76,10 @@ const Header = () => {
           </li>
         </ul>
 
-        {loginState || googleLogin ? (
+        {loginState ? (
           <>
             <span className='text-[#8894A0] ml-[88px] select-none'>
-              환영합니다!
+              박지우님 환영합니다!
             </span>
             <button
               className='bg-[#347fff] w-[130px] h-[42px] ml-[50px] font-medium mr-[41px] text-white select-none'
