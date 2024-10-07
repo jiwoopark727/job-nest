@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import { login, logout } from '../../redux/loginSlice';
+import { login, logout } from '../../../redux/loginSlice';
 import { useDispatch } from 'react-redux';
-import { RootState } from '../../redux/store';
+import { RootState } from '../../../redux/store';
 
 // 할 일 항목 타입
 type TodoItem = {

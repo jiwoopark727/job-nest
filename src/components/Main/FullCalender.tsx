@@ -20,8 +20,8 @@ const FullCalender = () => {
   return (
     <>
       {load ? (
-        <div className='bg-white w-[1000px]'>
-          <div className='cal-container'>
+        <div className='bg-white w-[900px] border border-gray-400'>
+          <div className='cal-container p-[20px]'>
             <FullCalendar
               plugins={[dayGridPlugin, googleCalendarPlugin]}
               initialView='dayGridMonth'
@@ -32,7 +32,7 @@ const FullCalender = () => {
               eventDisplay={'block'}
               eventTextColor={'#FFF'}
               eventColor={'#347fff'}
-              height={'660px'}
+              height={'500px'}
             />
           </div>
         </div>
