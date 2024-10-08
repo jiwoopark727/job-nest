@@ -4,13 +4,10 @@ import dayGridPlugin from '@fullcalendar/daygrid';
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../redux/store';
-import { useDispatch } from 'react-redux';
 
 const FullCalender = () => {
   // Redux 상태에서 login 상태 가져오기
   const loginState = useSelector((state: RootState) => state.auth.login);
-  // 안쓰긴 하는데 일단 가져와놓음
-  const dispatch = useDispatch();
 
   const API_KEY = import.meta.env.VITE_GOOGLE_API_KEY;
   const [load, setLoad] = useState(false);

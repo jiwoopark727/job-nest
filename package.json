@@ -21,6 +21,7 @@
     "@fullcalendar/google-calendar": "^6.1.15",
     "@fullcalendar/react": "^6.1.15",
     "@fullcalendar/timegrid": "^6.1.15",
+    "@hello-pangea/dnd": "^17.0.0",
     "@microsoft/microsoft-graph-client": "^3.0.7",
     "@reduxjs/toolkit": "^2.2.7",
     "@types/fullcalendar": "^3.8.0",
