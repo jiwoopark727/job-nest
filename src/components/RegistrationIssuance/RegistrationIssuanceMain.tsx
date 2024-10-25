@@ -73,7 +73,7 @@ const RegistrationIssuanceMain = () => {
         setPageCount(Number(json.last_page));
         setLoading(false);
       } else {
-        console.error('API 요청이 실패했습니다.');
+        console.error('API 요청이 실패했습니다.', json.status);
         setLoading(false);
       }
     } catch (error) {

@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import { login, logout } from '../../../redux/loginSlice';
-import { useDispatch } from 'react-redux';
 import { RootState } from '../../../redux/store';
 
 // 할 일 항목 타입
@@ -34,22 +32,11 @@ const ToDoApp = () => {
 
   // Redux 상태에서 login 상태 가져오기
   const loginState = useSelector((state: RootState) => state.auth.login);
-  const dispatch = useDispatch();
-
-  // 로그인 상태를 토글하는 함수
-  const handleLogin = (value: boolean) => {
-    if (value) {
-      dispatch(login());
-    } else {
-      dispatch(logout());
-    }
-  };
 
   useEffect(() => {
     const storedToken = localStorage.getItem('authToken');
     if (storedToken) {
       setToken(storedToken);
-      handleLogin(true);
 
       const savedTodos = localStorage.getItem(`todos_${storedToken}`);
       const savedNextId = localStorage.getItem(`nextId_${storedToken}`);
@@ -61,10 +48,8 @@ const ToDoApp = () => {
       if (savedNextId) {
         setNextId(JSON.parse(savedNextId));
       }
-    } else {
-      handleLogin(false);
     }
-  }, [token]); // Added token as a dependency to recheck if token changes
+  }, [token]);
 
   // 날짜 자동 업데이트
   useEffect(() => {

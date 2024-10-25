@@ -5,10 +5,11 @@ import RegistrationIssuanceMainView from './views/RegistrationIssuance/Registrat
 import RegistrationIssuanceViewHistroyView from './views/RegistrationIssuance/RegistrationIssuanceViewHistroyView';
 import ContractDraftingView from './views/ContractDraftingView';
 import ContractManagementView from './views/ContractManagementView';
+import { GoogleOAuthProvider } from '@react-oauth/google';
 
 const App = () => {
   return (
-    <>
+    <GoogleOAuthProvider clientId={`${import.meta.env.VITE_GOOGLE_CLIENT_ID}`}>
       <Routes>
         <Route path='/' element={<Layout />}>
           <Route index element={<MainView />} />
@@ -27,7 +28,7 @@ const App = () => {
           <Route path='/contractDrafting' element={<ContractDraftingView />} />
         </Route>
       </Routes>
-    </>
+    </GoogleOAuthProvider>
   );
 };
 

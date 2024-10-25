@@ -9,6 +9,9 @@ const FullCalender = () => {
   // Redux 상태에서 login 상태 가져오기
   const loginState = useSelector((state: RootState) => state.auth.login);
 
+  const userInfoObj = localStorage.getItem('userInfo');
+  const userInfo = userInfoObj ? JSON.parse(userInfoObj) : null;
+
   const API_KEY = import.meta.env.VITE_GOOGLE_API_KEY;
   const [load, setLoad] = useState(false);
   const handleLoad = () => {
@@ -16,7 +19,7 @@ const FullCalender = () => {
   };
   return (
     <>
-      {load ? (
+      {load && loginState ? (
         <div className='bg-white w-[900px] border border-gray-400'>
           <div className='cal-container p-[20px]'>
             <FullCalendar
@@ -24,7 +27,7 @@ const FullCalender = () => {
               initialView='dayGridMonth'
               googleCalendarApiKey={API_KEY}
               events={{
-                googleCalendarId: 'jiwoopark727@gmail.com',
+                googleCalendarId: userInfo.userEmail,
               }}
               eventDisplay={'block'}
               eventTextColor={'#FFF'}
