@@ -114,7 +114,12 @@ const Header = () => {
       </div>
       <div className='flex items-center ml-auto'>
         <ul className='flex gap-[38px]'>
-          <li className='font-medium text-[18px] select-none'>매물 관리</li>
+          <li
+            className='font-medium text-[18px] select-none cursor-pointer'
+            onClick={() => navigate('/propertyManagementMain')}
+          >
+            매물 관리
+          </li>
           <li className='font-medium text-[18px] select-none'>
             <Link to='/contractManagement'>계약 관리</Link>
           </li>

@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react';
 import { useCallback } from 'react';
-import BookMarkList from './bookmark/BookMarkList';
-import BookMarkManageModal from './bookmark/BookMarkManageModal';
+import BookMarkList from './Bookmark/BookMarkList';
+import BookMarkManageModal from './Bookmark/BookMarkManageModal';
 import axios from 'axios';
 import ToDoApp from './Todo/TodoButton';
-import FullCalender from './FullCalender';
+import FullCalender from './Calendar/FullCalender';
 
 type TBookmark = {
   id: number;
