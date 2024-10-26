@@ -1,13 +1,13 @@
-import React, { useState, useEffect } from "react";
-import Btn from "./Btn";
-import clipboard from "../../../assets/images/clipboard.png";
-import SearchDropDown from "./SearchDropDown";
-import SearchCheck from "./SearchCheck";
-import SearchDate from "./SearchDate";
-import { FiSearch, FiRefreshCw } from "react-icons/fi";
-import SearchBtn from "./SearchBtn";
-import SearchResults from "./SearchResults";
-import axios from "axios";
+import React, { useState, useEffect } from 'react';
+import Btn from './Btn';
+import clipboard from '../../../assets/images/clipboard.png';
+import SearchDropDown from './SearchDropDown';
+import SearchCheck from './SearchCheck';
+import SearchDate from './SearchDate';
+import { FiSearch, FiRefreshCw } from 'react-icons/fi';
+import SearchBtn from './SearchBtn';
+import SearchResults from './SearchResults';
+import axios from 'axios';
 
 interface SearchProps {
   onCreateDraft: () => void;
@@ -31,45 +31,45 @@ type Data = {
 
 const Search: React.FC<SearchProps> = ({ onCreateDraft }) => {
   const contractType = [
-    "아파트",
-    "주상복합",
-    "오피스텔",
-    "도시형생활주택",
-    "상가",
-    "사무실",
-    "연립",
-    "다세대",
-    "아파트분양권",
-    "주상복합분양권",
-    "오피스텔분양권",
-    "조합원입주권",
-    "단독주택",
-    "다가구주택",
-    "다중주택",
-    "원룸",
-    "상가주택",
-    "상가건물",
-    "건물",
-    "공장",
-    "창고",
-    "부동산",
-    "토지",
-    "표준임대차계약서",
-    "주택표준임대차계약서",
-    "상가건물임대차표준계약서",
-    "전대차(주택)",
-    "전대차(상가)",
-    "상가권리금",
-    "권리양도양수",
+    '아파트',
+    '주상복합',
+    '오피스텔',
+    '도시형생활주택',
+    '상가',
+    '사무실',
+    '연립',
+    '다세대',
+    '아파트분양권',
+    '주상복합분양권',
+    '오피스텔분양권',
+    '조합원입주권',
+    '단독주택',
+    '다가구주택',
+    '다중주택',
+    '원룸',
+    '상가주택',
+    '상가건물',
+    '건물',
+    '공장',
+    '창고',
+    '부동산',
+    '토지',
+    '표준임대차계약서',
+    '주택표준임대차계약서',
+    '상가건물임대차표준계약서',
+    '전대차(주택)',
+    '전대차(상가)',
+    '상가권리금',
+    '권리양도양수',
   ];
-  const transactionType = ["매매", "전세", "월세", "연세"];
+  const transactionType = ['매매', '전세', '월세', '연세'];
   const contractStatusOptions = [
-    { label: "전체" },
-    { label: "계약중" },
-    { label: "계약완료" },
+    { label: '전체' },
+    { label: '계약중' },
+    { label: '계약완료' },
   ];
 
-  const brokerageTypeOptions = [{ label: "공동중개" }, { label: "단독중개" }];
+  const brokerageTypeOptions = [{ label: '공동중개' }, { label: '단독중개' }];
 
   const [selectedContractType, setSelectedContractType] = useState<
     string | null
@@ -85,7 +85,7 @@ const Search: React.FC<SearchProps> = ({ onCreateDraft }) => {
   >(null);
   const [startDate, setStartDate] = useState<Date | null>(new Date());
   const [endDate, setEndDate] = useState<Date | null>(new Date());
-  const [selectedPeriod, setSelectedPeriod] = useState<string>("");
+  const [selectedPeriod, setSelectedPeriod] = useState<string>('');
   const [data, setData] = useState<Data[]>([]);
   const [filteredData, setFilteredData] = useState<Data[]>([]);
   const [isSearchClicked, setIsSearchClicked] = useState<boolean>(false);
@@ -98,7 +98,7 @@ const Search: React.FC<SearchProps> = ({ onCreateDraft }) => {
     try {
       const response = await axios.get(url, {
         headers: {
-          "Referrer-Policy": "no-referrer",
+          'Referrer-Policy': 'no-referrer',
         },
       });
 
@@ -121,7 +121,7 @@ const Search: React.FC<SearchProps> = ({ onCreateDraft }) => {
 
       setData(fetchedData);
     } catch (err: any) {
-      console.error("데이터를 가져오는 데 실패했습니다.", err);
+      console.error('데이터를 가져오는 데 실패했습니다.', err);
       setIsLoading(false);
     } finally {
       setIsLoading(false);
@@ -138,7 +138,7 @@ const Search: React.FC<SearchProps> = ({ onCreateDraft }) => {
     setSelectedBrokerageType(null);
     setStartDate(new Date());
     setEndDate(new Date());
-    setSelectedPeriod("");
+    setSelectedPeriod('');
     setFilteredData(data); // 초기화 시 전체 데이터
     setIsSearchClicked(false);
   };
@@ -148,8 +148,8 @@ const Search: React.FC<SearchProps> = ({ onCreateDraft }) => {
     const startDateObj = startDate ? new Date(startDate) : today;
     const endDateObj = endDate ? new Date(endDate) : today;
 
-    console.log("Start Date Object:", startDateObj?.toDateString());
-    console.log("End Date Object:", endDateObj?.toDateString());
+    console.log('Start Date Object:', startDateObj?.toDateString());
+    console.log('End Date Object:', endDateObj?.toDateString());
 
     const filteredResults = data.filter((item) => {
       const isContractTypeMatch =
@@ -160,17 +160,17 @@ const Search: React.FC<SearchProps> = ({ onCreateDraft }) => {
       // 계약 상태
       const endDate = new Date(item.만기일);
       let isContractStatusMatch = true;
-      if (selectedContractStatus === "계약완료") {
+      if (selectedContractStatus === '계약완료') {
         isContractStatusMatch = endDate < today; // 만기일이 오늘 이전
-      } else if (selectedContractStatus === "계약중") {
+      } else if (selectedContractStatus === '계약중') {
         isContractStatusMatch = endDate >= today; // 만기일이 오늘까지
       }
 
       // 중개 유형
       const isBrokerageTypeMatch =
         !selectedBrokerageType ||
-        (selectedBrokerageType === "공동중개" && item.공동중개업소 !== null) ||
-        (selectedBrokerageType === "단독중개" && item.공동중개업소 === null);
+        (selectedBrokerageType === '공동중개' && item.공동중개업소 !== null) ||
+        (selectedBrokerageType === '단독중개' && item.공동중개업소 === null);
 
       const contractDate = new Date(item.계약일);
       let isDateInRange = true;
@@ -199,20 +199,20 @@ const Search: React.FC<SearchProps> = ({ onCreateDraft }) => {
   };
 
   return (
-    <div className="mb-16">
-      <div className="flex  w-[1142px] mt-[80px]  justify-between">
-        <div className="flex items-center mb-4">
-          <img src={clipboard} alt="Clipboard" className="w-[23px] h-[23px]" />
-          <span className="text-[23px]  font-bold">계약관리</span>
+    <div className='mb-16'>
+      <div className='flex  w-[1142px] mt-[80px]  justify-between'>
+        <div className='flex items-center mb-4'>
+          <img src={clipboard} alt='Clipboard' className='w-[23px] h-[23px]' />
+          <span className='text-[35px]  font-bold pl-[10px]'>계약관리</span>
         </div>
         <Btn onClick={onCreateDraft} />
       </div>
-      <div className="bg-white w-[1142px] h-[457px] flex justify-center">
+      <div className='bg-white w-[1142px] h-[457px] flex justify-center'>
         <h1>
-          <div className="text-[20px] font-bold my-4">계약서 검색</div>
-          <div className="w-[1076px] h-[1px] bg-black"></div>
-          <div className="flex items-center">
-            <div className="text-[13px] w-[100px] my-4 font-bold">날짜조회</div>
+          <div className='text-[20px] font-bold my-4'>계약서 검색</div>
+          <div className='w-[1076px] h-[1px] bg-black'></div>
+          <div className='flex items-center'>
+            <div className='text-[13px] w-[100px] my-4 font-bold'>날짜조회</div>
             <SearchDate
               startDate={startDate}
               endDate={endDate}
@@ -222,10 +222,10 @@ const Search: React.FC<SearchProps> = ({ onCreateDraft }) => {
               setSelectedPeriod={setSelectedPeriod}
             />
           </div>
-          <div className="w-[1076px] h-[1px] bg-[#CCCCCC]"></div>
-          <div className="flex items-center">
-            <div className="w-[500px] flex items-center">
-              <div className="text-[13px] my-4 font-bold w-[100px]">
+          <div className='w-[1076px] h-[1px] bg-[#CCCCCC]'></div>
+          <div className='flex items-center'>
+            <div className='w-[500px] flex items-center'>
+              <div className='text-[13px] my-4 font-bold w-[100px]'>
                 계약서 종류
               </div>
               <SearchDropDown
@@ -234,7 +234,7 @@ const Search: React.FC<SearchProps> = ({ onCreateDraft }) => {
                 onSelect={setSelectedContractType}
               />
             </div>
-            <div className="text-[13px] my-4 font-bold w-[100px]">
+            <div className='text-[13px] my-4 font-bold w-[100px]'>
               계약서상태
             </div>
             <SearchCheck
@@ -243,10 +243,10 @@ const Search: React.FC<SearchProps> = ({ onCreateDraft }) => {
               onSelect={setSelectedContractStatus}
             />
           </div>
-          <div className="w-[1076px] h-[1px] bg-[#CCCCCC]"></div>
-          <div className="flex items-center">
-            <div className="flex w-[500px] items-center">
-              <div className="text-[13px] my-4 font-bold w-[100px]">
+          <div className='w-[1076px] h-[1px] bg-[#CCCCCC]'></div>
+          <div className='flex items-center'>
+            <div className='flex w-[500px] items-center'>
+              <div className='text-[13px] my-4 font-bold w-[100px]'>
                 거래유형
               </div>
               <SearchDropDown
@@ -255,28 +255,28 @@ const Search: React.FC<SearchProps> = ({ onCreateDraft }) => {
                 onSelect={setSelectedTransactionType}
               />
             </div>
-            <div className="text-[13px] my-4 font-bold w-[100px]">중개유형</div>
+            <div className='text-[13px] my-4 font-bold w-[100px]'>중개유형</div>
             <SearchCheck
               options={brokerageTypeOptions}
               selectedOption={selectedBrokerageType}
               onSelect={setSelectedBrokerageType}
             />
           </div>
-          <div className="w-[1076px] h-[1px] bg-[#CCCCCC]"></div>
-          <div className="flex justify-center gap-2 mt-6">
+          <div className='w-[1076px] h-[1px] bg-[#CCCCCC]'></div>
+          <div className='flex justify-center gap-2 mt-6'>
             <SearchBtn
               icon={<FiRefreshCw />}
-              text="초기화"
-              borderColor="gray"
-              textColor="black"
+              text='초기화'
+              borderColor='gray'
+              textColor='black'
               onClick={resetAll}
             />
 
             <SearchBtn
               icon={<FiSearch />}
-              text="검색"
-              borderColor="#335995"
-              textColor="#335995"
+              text='검색'
+              borderColor='#335995'
+              textColor='#335995'
               onClick={handleSearch}
             />
           </div>
