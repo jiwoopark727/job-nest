@@ -147,7 +147,7 @@ const PropertyManagementMain = () => {
         </div>
 
         {/* 탭 UI */}
-        <div className='flex pl-[57px] pt-[45px] justify-between text-[14px]'>
+        <div className='flex pl-[57px] pt-[45px] justify-between text-[14px] w-[1223px]'>
           <div>
             {sheets.map((sheet, index) => (
               <button
@@ -199,7 +199,7 @@ const PropertyManagementMain = () => {
             rowHeaders={true}
             colHeaders={true}
             height='auto'
-            width='1200px'
+            width='1150px'
             autoWrapRow={true}
             autoWrapCol={true}
             minSpareRows={1}
