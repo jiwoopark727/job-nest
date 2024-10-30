@@ -123,7 +123,13 @@ const PropertyManagementMain = () => {
   const exportToCSV = () => {
     const sheetData = sheets[activeSheetIndex].data;
     const csvContent = sheetData.map((row) => row.join(',')).join('\n');
-    const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+
+    // UTF-8 BOM 추가
+    const bom = '\uFEFF';
+    const blob = new Blob([bom + csvContent], {
+      type: 'text/csv;charset=utf-8;',
+    });
+
     const url = URL.createObjectURL(blob);
     const link = document.createElement('a');
     link.href = url;
