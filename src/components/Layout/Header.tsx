@@ -120,6 +120,12 @@ const Header = () => {
           >
             매물 관리
           </li>
+          <li
+            className='font-medium text-[18px] select-none cursor-pointer'
+            onClick={() => navigate('/propertyMap')}
+          >
+            매물 지도
+          </li>
           <li className='font-medium text-[18px] select-none'>
             <Link to='/contractManagement'>계약 관리</Link>
           </li>

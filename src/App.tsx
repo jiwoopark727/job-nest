@@ -7,6 +7,7 @@ import ContractDraftingView from './views/ContractDraftingView';
 import ContractManagementView from './views/ContractManagementView';
 import { GoogleOAuthProvider } from '@react-oauth/google';
 import PropertyManagementMain from './components/PropertyManagement/PropertyManagementMain';
+import PropertyMap from './components/Map/PropertyMap';
 
 const App = () => {
   return (
@@ -18,6 +19,7 @@ const App = () => {
             path='/propertyManagementMain'
             element={<PropertyManagementMain />}
           />
+          <Route path='/propertyMap' element={<PropertyMap />} />
           <Route
             path='/registrationIssuance'
             element={<RegistrationIssuanceMainView />}
