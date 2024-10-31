@@ -1,6 +1,6 @@
-import { useState } from "react";
-import Search from "../components/ContractManagement/Search/Search";
-import PreContractDrafting from "../components/ContractManagement/Drafting/Pre/PreContractDrafting";
+import { useState } from 'react';
+import Search from '../../components/ContractManagement/Search/Search';
+import PreContractDrafting from '../../components/ContractManagement/Drafting/Pre/PreContractDrafting';
 
 const ContractManagementView = () => {
   const [isDraftVisible, setIsDraftVisible] = useState(false);
@@ -12,7 +12,7 @@ const ContractManagementView = () => {
     setIsDraftVisible(false);
   };
   return (
-    <div className="bg-[#F7F8F9] h-full flex flex-col items-center w-full">
+    <div className='bg-[#F7F8F9] h-full flex flex-col items-center w-full'>
       {isDraftVisible ? (
         <PreContractDrafting onCancel={handleCancelDraft} />
       ) : (

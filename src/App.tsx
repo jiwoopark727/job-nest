@@ -1,13 +1,19 @@
 import { Route, Routes } from 'react-router-dom';
 import { Layout } from './Layout';
-import MainView from './views/MainView';
+import { GoogleOAuthProvider } from '@react-oauth/google';
+import MainView from './views/Main/MainView';
 import RegistrationIssuanceMainView from './views/RegistrationIssuance/RegistrationIssuanceMainView';
 import RegistrationIssuanceViewHistroyView from './views/RegistrationIssuance/RegistrationIssuanceViewHistroyView';
-import ContractDraftingView from './views/ContractDraftingView';
-import ContractManagementView from './views/ContractManagementView';
-import { GoogleOAuthProvider } from '@react-oauth/google';
-import PropertyManagementMain from './components/PropertyManagement/PropertyManagementMain';
-import PropertyMap from './components/Map/PropertyMap';
+import ContractDraftingView from './views/ContractManagement/ContractDraftingView';
+import ContractManagementView from './views/ContractManagement/ContractManagementView';
+import PropertyManagementMainView from './views/PropertyManagement/PropertyManagementMainView';
+import PropertyMapView from './views/PropertyMap/PropertyMapView';
+
+declare global {
+  interface Window {
+    kakao: any;
+  }
+}
 
 const App = () => {
   return (
@@ -17,9 +23,9 @@ const App = () => {
           <Route index element={<MainView />} />
           <Route
             path='/propertyManagementMain'
-            element={<PropertyManagementMain />}
+            element={<PropertyManagementMainView />}
           />
-          <Route path='/propertyMap' element={<PropertyMap />} />
+          <Route path='/propertyMap' element={<PropertyMapView />} />
           <Route
             path='/registrationIssuance'
             element={<RegistrationIssuanceMainView />}

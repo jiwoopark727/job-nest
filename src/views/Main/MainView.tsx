@@ -1,4 +1,4 @@
-import MainPage from '../components/Main/MainPage';
+import MainPage from '../../components/Main/MainPage';
 
 const MainView = () => {
   return (
