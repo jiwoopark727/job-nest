@@ -145,7 +145,11 @@ const PropertyMap = () => {
         // 마커 이벤트 추가
         window.kakao.maps.event.addListener(marker, 'mouseover', () => {
           infowindow.setContent(
-            `<div class="text-black">${place.place_name}</div>`
+            `
+            <div style="text-align: center;">
+              <span style="color: black; font-size: 15px;">${place.place_name}</span>
+            </div>
+            `
           );
           infowindow.open(map, marker);
         });
@@ -192,13 +196,15 @@ const PropertyMap = () => {
           }}
           className='flex flex-col items-center space-y-2'
         >
-          <label className='font-semibold'>키워드:</label>
+          <label className='font-semibold'>주소</label>
           <input
             type='text'
             value={tmpKeyword}
             onChange={(e) => setTmpKeyword(e.target.value)}
             className='p-2 border rounded w-full'
             placeholder='검색할 키워드 입력'
+            spellCheck='false'
+            autoComplete='false'
           />
           <button
             type='submit'
@@ -212,21 +218,23 @@ const PropertyMap = () => {
         <hr className='my-2 border-gray-400' />
 
         {/* 검색 결과 목록 */}
-        <ul className='overflow-y-auto max-h-[570px]'>
+        <ul className='overflow-y-auto max-h-[580px]'>
           {places.map((place: any, index: number) => (
             <li key={index} className='cursor-pointer p-2 border-b'>
               <div className='flex items-start space-x-2'>
-                <div className='w-[22px] h-[22px] bg-[#347fff] text-white text-center rounded-full text-[15.5px]'>
+                <div className='w-[20px] h-[20px] bg-[#347fff] text-white text-center rounded-full text-[14px]'>
                   {index + 1}
                 </div>
                 <div className='flex flex-col'>
-                  <span className='font-bold'>{place.place_name}</span>
+                  <span className='font-bold text-[15px]'>
+                    {place.place_name}
+                  </span>
                   {place.road_address_name && (
-                    <span className='text-sm text-gray-600'>
+                    <span className='text-[13px] text-gray-600'>
                       {place.road_address_name}
                     </span>
                   )}
-                  <span className='text-sm text-gray-600'>
+                  <span className='text-[13px] text-gray-600'>
                     {place.address_name}
                   </span>
                   <span className='text-sm text-green-600'>{place.phone}</span>
