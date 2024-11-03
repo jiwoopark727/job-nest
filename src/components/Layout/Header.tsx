@@ -68,7 +68,7 @@ const Header = () => {
       console.error('Google 로그인 실패');
     },
     scope:
-      'https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/userinfo.email',
+      'https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/calendar',
   });
 
   // 기존 로그인 토큰 받아오기
