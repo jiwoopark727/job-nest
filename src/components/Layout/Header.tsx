@@ -116,6 +116,12 @@ const Header = () => {
         <ul className='flex gap-[38px]'>
           <li
             className='font-medium text-[18px] select-none cursor-pointer'
+            onClick={() => navigate('/')}
+          >
+            홈
+          </li>
+          <li
+            className='font-medium text-[18px] select-none cursor-pointer'
             onClick={() => navigate('/propertyManagementMain')}
           >
             매물 관리
