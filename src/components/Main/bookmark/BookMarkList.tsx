@@ -19,7 +19,7 @@ const BookMarkList = ({ bookmarksArray }: TPropsList) => {
       {bookmarksArray.map((val, idx) =>
         //bookmarksArray의 checked가 true인 것만 나열
         val.checked ? (
-          <div className='mb-[43px]' key={idx}>
+          <div className='mb-[10px]' key={idx}>
             <a className='m-auto' href={val.url} target='_blank'>
               <div className='border-black boder-solid border w-[180px] h-[180px] mb-[12px] flex cursor-pointer'>
                 {!val.ogImage || val.ogImage === 'default' ? (

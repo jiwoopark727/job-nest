@@ -276,10 +276,10 @@ const BookMark = () => {
         </div>
       )}
 
-      <div className='absolute right-[190px] bottom-5 select-none'>
+      <div className='absolute right-[190px] bottom-14 select-none'>
         <FullCalender></FullCalender>
       </div>
-      <div className='absolute right-9 bottom-5 select-none'>
+      <div className='absolute right-9 bottom-14 select-none'>
         <ToDoApp />
       </div>
     </div>

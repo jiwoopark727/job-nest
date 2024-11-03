@@ -1,0 +1,24 @@
+.fc-toolbar-title {
+  color: #333;
+  font-weight: bold;
+  font-size: 1.5em;
+}
+
+/* 일자 스타일 */
+.fc-daygrid-day {
+  border: 1px solid #ddd;
+}
+
+.fc-daygrid-day-number {
+  color: #555;
+  font-size: 0.85em;
+}
+
+/* 이벤트 스타일 */
+.fc-event {
+  background-color: #347fff !important; /* 이벤트 배경색 */
+  color: #ffffff !important; /* 텍스트 색상 */
+  border-radius: 4px !important;
+  padding: 4px 4px !important;
+  font-size: 0.9em;
+}
