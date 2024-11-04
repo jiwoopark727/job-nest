@@ -194,6 +194,7 @@ const BookMark = () => {
         const faviconTag = doc.querySelector(
           'link[rel="icon"], link[rel="shortcut icon"]'
         );
+
         faviconUrl = faviconTag ? faviconTag.getAttribute('href') : '';
 
         // faviconUrl이 상대 경로인 경우 절대 경로로 변경
@@ -229,13 +230,23 @@ const BookMark = () => {
       console.error('메타 데이터를 가져오는 중 오류 발생:', err);
     }
   };
+
   // 모든 북마크에 대해 메타 데이터를 가져오는 함수
+  // const fetchAllMetaData = useCallback(async () => {
+  //   for (const bookmark of bookmarksArray) {
+  //     if (!bookmark.ogImage) {
+  //       console.log('fetchMetaData 실행');
+  //       await fetchMetaData(bookmark);
+  //     }
+  //   }
+  //   setHasFetchedMetaData(true); // 메타 데이터 가져오기 완료 상태 설정
+  // }, [bookmarksArray]);
+
   const fetchAllMetaData = useCallback(async () => {
-    for (const bookmark of bookmarksArray) {
-      if (!bookmark.ogImage) {
-        console.log('fetchMetaData 실행');
-        await fetchMetaData(bookmark);
-      }
+    const lastBookmark = bookmarksArray.slice(-1)[0]; // 마지막 항목 가져오기
+    if (lastBookmark && !lastBookmark.ogImage) {
+      console.log('fetchMetaData 실행');
+      await fetchMetaData(lastBookmark);
     }
     setHasFetchedMetaData(true); // 메타 데이터 가져오기 완료 상태 설정
   }, [bookmarksArray]);
@@ -246,6 +257,15 @@ const BookMark = () => {
       fetchAllMetaData();
     }
   }, [bookmarksArray, hasFetchedMetaData, fetchAllMetaData]);
+
+  useEffect(() => {
+    // 가장 최근에 추가된 북마크 가져오기
+    const lastBookmark = bookmarksArray.slice(-1)[0];
+    if (lastBookmark && !lastBookmark.ogImage) {
+      console.log('fetchMetaData 실행');
+      fetchMetaData(lastBookmark);
+    }
+  }, [bookmarksArray]); // bookmarksArray가 변경될 때마다 실행
 
   return (
     <div className='ml-[65px] mt-[50px] mr-[65px] max-w-[1440px]'>

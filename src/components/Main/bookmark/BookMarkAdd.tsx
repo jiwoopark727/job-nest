@@ -90,7 +90,6 @@ const BookMarkAdd = ({
           <button
             className='w-[58px] h-[34px] border border-[#747474] rounded-[6px] text-[14px] bg-[#747474] text-white'
             onClick={() => {
-              console.log(bookmarksArray);
               const newBookmark = {
                 id: tempBookmarksArray[tempBookmarksArray.length - 1].id + 1,
                 title: inputTitleValue,
@@ -101,6 +100,8 @@ const BookMarkAdd = ({
               // 기존 북마크 배열에 새 북마크를 추가
               const newBookmarksArray = [...tempBookmarksArray, newBookmark];
               updateBookmarksArray(newBookmarksArray);
+
+              console.log(newBookmarksArray);
 
               // 로컬 스토리지에 새 북마크 배열을 저장
               localStorage.setItem(
@@ -115,8 +116,8 @@ const BookMarkAdd = ({
           </button>
         </div>
         {/* <pre>{JSON.stringify(inputTitleValue)}</pre>
-        <pre>{JSON.stringify(inputUrlValue)}</pre>
-        <pre>{JSON.stringify(tempBookmarksArray.length)}</pre> */}
+          <pre>{JSON.stringify(inputUrlValue)}</pre>
+          <pre>{JSON.stringify(tempBookmarksArray.length)}</pre> */}
       </div>
     </>
   );
