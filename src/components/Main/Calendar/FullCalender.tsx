@@ -119,7 +119,7 @@ import interactionPlugin from '@fullcalendar/interaction';
 import { useRef, useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../../redux/store';
-import axios from 'axios';
+import axios, { AxiosError } from 'axios';
 
 const FullCalendarComponent = () => {
   const calendarRef = useRef<FullCalendar | null>(null);
@@ -141,7 +141,7 @@ const FullCalendarComponent = () => {
   // Google Calendar에서 이벤트 불러오기
   const fetchGoogleEvents = async () => {
     if (!token) {
-      console.error('Token not found in localStorage.');
+      console.error('토큰이 없음. 다시 로그인');
       return;
     }
 
@@ -171,7 +171,13 @@ const FullCalendarComponent = () => {
       }));
       setEvents(googleEvents);
     } catch (error) {
-      console.error('Error fetching events:', error);
+      const axiosError = error as AxiosError; // AxiosError로 타입 단언
+      if (axiosError.response?.status === 401) {
+        alert('토큰이 만료되었습니다. 다시 로그인해주세요.');
+        localStorage.removeItem('authToken');
+      } else {
+        console.error('이벤트를 가져오는 중 오류 발생:', error);
+      }
     }
   };
 
@@ -180,35 +186,55 @@ const FullCalendarComponent = () => {
     if (!token) return;
 
     const title = prompt('새로운 일정 제목을 입력하세요');
-    if (title) {
-      try {
-        const response = await axios.post(
-          `https://www.googleapis.com/calendar/v3/calendars/primary/events`,
-          {
+    if (!title) {
+      console.log('일정 제목이 입력되지 않아 추가를 취소합니다.');
+      return;
+    }
+
+    try {
+      console.log('일정 추가 요청을 전송 중...');
+      const isAllDay = selectInfo.allDay; // 선택한 일정이 하루 종일인지 확인
+      const eventData = isAllDay
+        ? {
             summary: title,
-            start: { dateTime: selectInfo.startStr },
-            end: { dateTime: selectInfo.endStr },
-          },
-          {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
+            start: { date: selectInfo.startStr.split('T')[0] }, // 날짜만 전달
+            end: { date: selectInfo.endStr.split('T')[0] }, // 종료 날짜도 날짜만 전달
           }
-        );
-        const newEvent = response.data;
-        setEvents((prevEvents) => [
-          ...prevEvents,
-          {
-            id: newEvent.id,
-            title: newEvent.summary,
-            start: newEvent.start.dateTime || newEvent.start.date,
-            end: newEvent.end.dateTime || newEvent.end.date,
+        : {
+            summary: title,
+            start: { dateTime: selectInfo.startStr }, // ISO 8601 형식이어야 함
+            end: { dateTime: selectInfo.endStr }, // ISO 8601 형식이어야 함
+          };
+
+      const response = await axios.post(
+        `https://www.googleapis.com/calendar/v3/calendars/primary/events`,
+        eventData,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
           },
-        ]);
-      } catch (error) {
-        console.error('Error adding event:', error);
+        }
+      );
+
+      const newEvent = response.data;
+      console.log('일정 추가 성공:', newEvent);
+
+      setEvents((prevEvents) => [
+        ...prevEvents,
+        {
+          id: newEvent.id,
+          title: newEvent.summary,
+          start: newEvent.start.dateTime || newEvent.start.date,
+          end: newEvent.end.dateTime || newEvent.end.date,
+        },
+      ]);
+    } catch (error) {
+      console.error('일정 추가 중 오류 발생:', error);
+      if (axios.isAxiosError(error)) {
+        console.error('Axios 에러 응답:', error.response);
       }
     }
+
     calendarRef.current?.getApi().unselect();
   };
 
@@ -230,7 +256,7 @@ const FullCalendarComponent = () => {
           prevEvents.filter((event) => event.id !== clickInfo.event.id)
         );
       } catch (error) {
-        console.error('Error deleting event:', error);
+        console.error('일정 삭제 중 오류 발생:', error);
       }
     }
   };

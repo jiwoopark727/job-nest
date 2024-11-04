@@ -22,11 +22,13 @@ const Header = () => {
   const handleLogin = (data: TUserInfo) => {
     console.log(data);
     dispatch(login({ userName: data?.userName, userEmail: data?.userEmail }));
+    localStorage.setItem('userInfo', JSON.stringify(data));
   };
 
   //로그아웃
   const handleLogout = () => {
     localStorage.removeItem('authToken'); // 로컬 토큰 삭제
+    localStorage.removeItem('userInfo'); // 로컬 토큰 삭제
     dispatch(logout());
   };
 
@@ -50,6 +52,7 @@ const Header = () => {
         );
 
         const userInfo = userInfoResponse.data;
+
         console.log('사용자 이름:', userInfo.names[0].displayName);
         console.log('사용자 G메일:', userInfo.emailAddresses[0].value);
 
@@ -57,8 +60,7 @@ const Header = () => {
           userName: userInfo.names[0].displayName,
           userEmail: userInfo.emailAddresses[0].value,
         };
-        // Redux 에 로그인을 함과 동시에 사용자 정보 전달 + 로컬스토리지에 사용자 정보 저장
-        localStorage.setItem('userInfo', JSON.stringify(obj));
+
         handleLogin(obj);
       } catch (error) {
         console.error('사용자 정보를 가져오는 도중 오류 발생:', error);
@@ -71,32 +73,13 @@ const Header = () => {
       'https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/calendar',
   });
 
-  // 기존 로그인 토큰 받아오기
-  // const getLoginToken = async () => {
-  //   try {
-  //     const response = await axios.get(
-  //       'https://api.safehomes.co.kr/realtors/api/token'
-  //     );
-
-  //     if (response.status === 200 && response.data.message === 'success') {
-  //       const token = response.data.cookie;
-  //       localStorage.setItem('authToken', token); // 토큰 저장
-  //       handleLogin(true);
-  //     }
-  //   } catch (error) {
-  //     console.error('로그인 토큰을 가져오는 도중 에러 발생:', error);
-  //   }
-  // };
-
   // 페이지 로드 시 로컬 스토리지에서 토큰 확인
   useEffect(() => {
     const token = localStorage.getItem('authToken');
     const userInfoObj = localStorage.getItem('userInfo');
     if (token && userInfoObj) {
       const userInfo = JSON.parse(userInfoObj);
-      if (userInfo.userName && userInfo.userEmail) {
-        handleLogin(userInfo);
-      }
+      handleLogin(userInfo);
     }
   }, []);
 
@@ -150,9 +133,7 @@ const Header = () => {
             </span>
             <button
               className='bg-[#347fff] w-[130px] h-[42px] ml-[50px] font-medium mr-[41px] text-white select-none'
-              onClick={() => {
-                handleLogout();
-              }}
+              onClick={handleLogout}
             >
               로그아웃
             </button>
