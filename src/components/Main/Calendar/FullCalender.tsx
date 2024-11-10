@@ -120,12 +120,17 @@ import { useRef, useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../../redux/store';
 import axios, { AxiosError } from 'axios';
+import { useNavigate } from 'react-router-dom';
+import { logout } from '../../../redux/loginSlice';
+import { useDispatch } from 'react-redux';
 
 const FullCalendarComponent = () => {
+  const navigate = useNavigate();
   const calendarRef = useRef<FullCalendar | null>(null);
   const loginState = useSelector((state: RootState) => state.auth.login);
-  const userInfoObj = localStorage.getItem('userInfo');
-  const userInfo = userInfoObj ? JSON.parse(userInfoObj) : null;
+  // const userInfoObj = localStorage.getItem('userInfo');
+  // const userInfo = userInfoObj ? JSON.parse(userInfoObj) : null;
+  const dispatch = useDispatch();
 
   const API_KEY = import.meta.env.VITE_GOOGLE_API_KEY;
   const [load, setLoad] = useState(false);
@@ -133,6 +138,13 @@ const FullCalendarComponent = () => {
 
   const handleLoad = () => {
     setLoad(!load);
+  };
+
+  //로그아웃
+  const handleLogout = () => {
+    localStorage.removeItem('authToken'); // 로컬 토큰 삭제
+    localStorage.removeItem('userInfo'); // 로컬 토큰 삭제
+    dispatch(logout());
   };
 
   // 로컬스토리지에서 토큰 가져오기
@@ -174,6 +186,7 @@ const FullCalendarComponent = () => {
       const axiosError = error as AxiosError; // AxiosError로 타입 단언
       if (axiosError.response?.status === 401) {
         alert('토큰이 만료되었습니다. 다시 로그인해주세요.');
+        handleLogout();
         localStorage.removeItem('authToken');
       } else {
         console.error('이벤트를 가져오는 중 오류 발생:', error);
