@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useCallback } from 'react';
-import BookMarkList from './Bookmark/BookMarkList';
-import BookMarkManageModal from './Bookmark/BookMarkManageModal';
+import BookMarkList from '../Main/Bookmark/BookMarkList';
+import BookMarkManageModal from '../Main/Bookmark/BookMarkManageModal';
 import axios from 'axios';
 import ToDoApp from './Todo/TodoButton';
 import FullCalender from './Calendar/FullCalender';
