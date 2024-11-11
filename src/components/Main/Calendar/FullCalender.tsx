@@ -35,6 +35,12 @@ const FullCalendarComponent = () => {
   // 로컬스토리지에서 토큰 가져오기
   const token = localStorage.getItem('authToken');
 
+  useEffect(() => {
+    if (load) {
+      fetchGoogleEvents();
+    }
+  }, [load]);
+
   // Google Calendar에서 이벤트 불러오기
   const fetchGoogleEvents = async () => {
     if (!token) {
@@ -158,10 +164,6 @@ const FullCalendarComponent = () => {
       }
     }
   };
-
-  useEffect(() => {
-    fetchGoogleEvents(); // 컴포넌트 마운트 시 Google Calendar 이벤트 가져오기
-  }, []);
 
   return (
     <>
