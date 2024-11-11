@@ -3,8 +3,8 @@ import { useCallback } from 'react';
 import axios from 'axios';
 import ToDoApp from './Todo/TodoButton';
 import FullCalender from './Calendar/FullCalender';
-import BookMarkList from './Bookmark/BookMarkList.tsx';
-import BookMarkManageModal from './Bookmark/BookMarkManageModal.tsx';
+import BookMarkList from './Bookmark/BookMarkList';
+import BookMarkManageModal from './Bookmark/BookMarkManageModal';
 
 type TBookmark = {
   id: number;
