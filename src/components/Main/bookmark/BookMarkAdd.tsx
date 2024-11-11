@@ -16,7 +16,7 @@ type TPropsAddModal = {
 
 const BookMarkAdd = ({
   closeAddModal,
-  bookmarksArray,
+  // bookmarksArray,
   updateBookmarksArray,
 }: TPropsAddModal) => {
   const [inputTitleValue, setInputTitleValue] = useState('제목을 입력하세요');

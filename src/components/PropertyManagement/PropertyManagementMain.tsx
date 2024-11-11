@@ -226,7 +226,7 @@ const PropertyManagementMain = () => {
             minSpareCols={1}
             colWidths={'100px'}
             rowHeights={'35px'}
-            cells={(row, col) => {
+            cells={() => {
               return { className: 'htCenter htMiddle' }; // 가운데 정렬 클래스 적용
             }}
             licenseKey='non-commercial-and-evaluation' // for non-commercial use only

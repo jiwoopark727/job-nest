@@ -1,138 +1,23 @@
-// import googleCalendarPlugin from '@fullcalendar/google-calendar';
-// import FullCalendar, { EventInput } from '@fullcalendar/react';
-// import dayGridPlugin from '@fullcalendar/daygrid';
-// import interactionPlugin from '@fullcalendar/interaction';
-// import { useRef, useState } from 'react';
-// import { useSelector } from 'react-redux';
-// import { RootState } from '../../../redux/store';
-
-// const FullCalender = () => {
-//   const calendarRef = useRef<FullCalendar | null>(null); // calendarRef 타입 설정
-//   // Redux 상태에서 login 상태 가져오기
-//   const loginState = useSelector((state: RootState) => state.auth.login);
-//   const userInfoObj = localStorage.getItem('userInfo');
-//   const userInfo = userInfoObj ? JSON.parse(userInfoObj) : null;
-
-//   const API_KEY = import.meta.env.VITE_GOOGLE_API_KEY;
-//   const [load, setLoad] = useState(false);
-//   const handleLoad = () => {
-//     setLoad(!load);
-//   };
-
-//   const [events, setEvents] = useState<EventInput[]>([]); // 일정 상태 관리
-
-//   // 일정 추가
-//   const handleDateSelect = (selectInfo: any) => {
-//     const title = prompt('새로운 일정 제목을 입력하세요');
-//     const calendarApi = calendarRef.current?.getApi(); // getApi()로 FullCalendar API 접근
-
-//     calendarApi?.unselect(); // 선택 해제
-
-//     if (title && calendarApi) {
-//       const newEvent = {
-//         id: String(events.length + 1),
-//         title,
-//         start: selectInfo.startStr,
-//         end: selectInfo.endStr,
-//         allDay: selectInfo.allDay,
-//       };
-//       calendarApi.addEvent(newEvent); // 캘린더에 새 이벤트 추가
-//       setEvents((prevEvents) => [...prevEvents, newEvent]); // 상태 업데이트
-//     }
-//   };
-
-//   // 일정 삭제
-//   const handleEventClick = (clickInfo: any) => {
-//     clickInfo.jsEvent.preventDefault(); // 기본 동작 방지 (링크 이동 방지)
-
-//     if (confirm(`'${clickInfo.event.title}' 일정을 삭제하시겠습니까?`)) {
-//       clickInfo.event.remove(); // 캘린더에서 이벤트 삭제
-//       setEvents((prevEvents) =>
-//         prevEvents.filter((event) => event.id !== clickInfo.event.id)
-//       ); // 상태에서도 삭제
-//     }
-//   };
-
-//   return (
-//     <>
-//       {load && loginState ? (
-//         <div className='bg-white w-[900px] border border-gray-400'>
-//           <div className='cal-container p-[20px] text-[14px]'>
-//             <FullCalendar
-//               ref={calendarRef} // ref를 FullCalendar에 연결
-//               plugins={[dayGridPlugin, googleCalendarPlugin, interactionPlugin]} // interactionPlugin 추가
-//               initialView='dayGridMonth'
-//               googleCalendarApiKey={API_KEY}
-//               events={{
-//                 googleCalendarId: userInfo.userEmail,
-//               }}
-//               eventDisplay={'block'}
-//               eventTextColor={'#FFF'}
-//               eventColor={'#347fff'}
-//               height={'500px'}
-//               contentHeight='auto'
-//               headerToolbar={{
-//                 left: 'prev,next today',
-//                 center: 'title',
-//                 right: 'dayGridMonth,dayGridWeek,dayGridDay',
-//               }}
-//               locale='ko' // 한국어로 로케일 설정
-//               buttonText={{
-//                 today: '오늘',
-//                 month: '월간',
-//                 week: '주간',
-//                 day: '일간',
-//               }}
-//               selectable={true} // 날짜 선택 가능 설정
-//               select={handleDateSelect} // 날짜 선택 시 실행될 함수
-//               eventClick={handleEventClick} // 이벤트 클릭 시 실행될 함수
-//             />
-//           </div>
-//         </div>
-//       ) : (
-//         ''
-//       )}
-
-//       {loginState ? (
-//         <div className='flex justify-end mt-[20px]'>
-//           <button
-//             className='px-4 py-2 bg-[#347fff] text-white w-[136px] h-[42px] rounded-md shadow-md text-[15px] font-extrabold'
-//             onClick={() => {
-//               handleLoad();
-//             }}
-//           >
-//             구글 캘린더
-//           </button>
-//         </div>
-//       ) : (
-//         ''
-//       )}
-//     </>
-//   );
-// };
-// export default FullCalender;
-
 import googleCalendarPlugin from '@fullcalendar/google-calendar';
-import FullCalendar, { EventInput } from '@fullcalendar/react';
+import FullCalendar from '@fullcalendar/react';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import interactionPlugin from '@fullcalendar/interaction';
 import { useRef, useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../../redux/store';
 import axios, { AxiosError } from 'axios';
-import { useNavigate } from 'react-router-dom';
 import { logout } from '../../../redux/loginSlice';
 import { useDispatch } from 'react-redux';
+import { EventInput } from '@fullcalendar/core/index.js';
 
 const FullCalendarComponent = () => {
-  const navigate = useNavigate();
   const calendarRef = useRef<FullCalendar | null>(null);
   const loginState = useSelector((state: RootState) => state.auth.login);
   // const userInfoObj = localStorage.getItem('userInfo');
   // const userInfo = userInfoObj ? JSON.parse(userInfoObj) : null;
   const dispatch = useDispatch();
 
-  const API_KEY = import.meta.env.VITE_GOOGLE_API_KEY;
+  // const API_KEY = import.meta.env.VITE_GOOGLE_API_KEY;
   const [load, setLoad] = useState(false);
   const [events, setEvents] = useState<EventInput[]>([]); // 일정 상태 관리
 

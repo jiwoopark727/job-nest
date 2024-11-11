@@ -189,13 +189,13 @@ const BookMark = () => {
       }
 
       // og:image가 없는 경우 favicon 추출
-      let faviconUrl = '';
+      let faviconUrl: string = '';
       if (!ogImageUrl) {
         const faviconTag = doc.querySelector(
           'link[rel="icon"], link[rel="shortcut icon"]'
         );
 
-        faviconUrl = faviconTag ? faviconTag.getAttribute('href') : '';
+        faviconUrl = faviconTag ? faviconTag.getAttribute('href') || '' : '';
 
         // faviconUrl이 상대 경로인 경우 절대 경로로 변경
         if (faviconUrl && !/^(https?:)?\/\//.test(faviconUrl)) {
