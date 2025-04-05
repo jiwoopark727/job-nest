@@ -101,12 +101,12 @@
 ## 🏗 프로젝트 구조
 
 ```plaintext
-/src
-  ├── assets       # 이미지, 아이콘
-  ├── components   # 재사용 가능한 UI 컴포넌트
-  ├── redux        # 상태 관리
-  ├── types        # 유틸리티 함수
-  ├── views        # 페이지 단위 컴포넌트
+/📦 src
+  ├──📁 assets       # 이미지, 아이콘
+  ├──📁 components   # 재사용 가능한 UI 컴포넌트
+  ├──📁 redux        # 상태 관리
+  ├──📁 types        # 유틸리티 함수
+  ├──📁 views        # 페이지 단위 컴포넌트
 ```
 
 ## 🔧 설치 및 실행 방법
