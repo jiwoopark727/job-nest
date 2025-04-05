@@ -64,6 +64,20 @@
       <p>계약서 화면</p>
       <img src="./src/assets/images/jobnest_contract.png" height="250" alt="계약서 화면">
     </td>
+    <td align="center">
+      <p>즐겨찾기 관리 화면</p>
+      <img src="./src/assets/images/jobnest_bookmark_manage.png" height="250" alt="즐겨찾기 관리 화면">
+    </td>
+  </tr>
+    <tr>
+    <td align="center">
+      <p>구글 캘린더 연동 화면</p>
+      <img src="./src/assets/images/jobnest_calendar.png" height="250" alt="구글 캘린더 연동 화면">
+    </td>
+    <td align="center">
+      <p>자체 todo list 화면</p>
+      <img src="./src/assets/images/jobnest_todo.png" height="250" alt="자체 todo list 화면">
+    </td>
   </tr>
 </table>
 
