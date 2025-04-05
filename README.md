@@ -9,12 +9,12 @@
 
 ### 🔹 공인중개사용 플랫폼
 
-- **즐겨찾기 관리**: 자주 이용하는 사이트을 즐겨찾기 형식으로 관리
-- **회원 관리**: 구글 로그인(Google OAuth2 지원)
+- **즐겨찾기 관리**: 자주 이용하는 사이트을 즐겨찾기 형식으로 관리(url로 ogImage나 favicon 가져와서 표시)
+- **회원 관리**: 구글 로그인(Google OAuth2 지원)을 사용하여 보단 편리한 회원가입을 구현현
 - **할일 관리**: Google Calendar API를 사용하여 할일 관리(+ 자체 TODO LIST 기능도 구현)
-- **매물 검색**: 최신 도로명 주소를 통한 매물 검색
-- **매물 등록 및 관리**: Handsontable을 활용한 엑셀 시트 스타일 UI 지원
-- **지도 기능**: KakaoMap API를 사용한 매물 위치와 주변 시설 확인
+- **매물 검색**: 최신 도로명 주소를 통한 매물 검색(ex: 궁동402-1)
+- **매물 등록 및 관리**: Handsontable을 활용한 엑셀 시트 스타일 UI 지원, CRUD 기능 및 csv 파일 형식으로 내보내기 기능 추가
+- **지도 기능**: KakaoMap API를 사용한 매물 위치와 주변 시설 확인, 핀 스타일 커스텀하여 가시성 상향
 - **등기/대장 열람**: 법적 정보 확인 기능 추가 예정(+ 현재는 더미 데이터를 넣어놓은 상태)
 
 ## 🛠 기술 스택
@@ -27,37 +27,6 @@
 ## 🎬 데모 배포 사이트 및 스크린샷
 
 🚀 **[JobNest 배포 사이트](https://job-nest-iota.vercel.app)**
-
-<!-- <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 20px;">
-  <div align="center">
-    <p><로그인 화면></p>
-    <img src="./src/assets/images/jobnest_login.png" width="400" alt="로그인 화면">
-  </div>
-  <div align="center">
-    <p><즐겨찾기 화면></p>
-    <img src="./src/assets/images/jobnest_bookmark.png" width="400" alt="즐겨찾기 화면">
-  </div>
-  <div align="center">
-    <p><주소검색 화면></p>
-    <img src="./src/assets/images/jobnest_search.png" width="400" alt="주소검색 화면">
-  </div>
-  <div align="center">
-    <p><지도 화면></p>
-    <img src="./src/assets/images/jobnest_map.png" width="400" alt="지도 화면">
-  </div>
-  <div align="center">
-    <p><매물관리 화면></p>
-    <img src="./src/assets/images/jobnest_property.png" width="400" alt="매물관리 화면">
-  </div>
-  <div align="center">
-    <p><등기대장 화면></p>
-    <img src="./src/assets/images/jobnest_registration.png" width="400" alt="등기대장 화면">
-  </div>
-  <div align="center">
-    <p><계약서 화면></p>
-    <img src="./src/assets/images/jobnest_contract.png" width="400" alt="계약서 화면">
-  </div>
-</div> -->
 
 <table>
   <tr>
