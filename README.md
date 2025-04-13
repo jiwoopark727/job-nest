@@ -39,7 +39,7 @@
 🚀 <a href="https://job-nest-iota.vercel.app" target="_blank" rel="noopener noreferrer"><strong>[JobNest 배포 사이트]</strong></a>
 <br/>
 
-<table marginTop:'30'>
+<table margin-top:'30'>
   <tr>
     <td align="center">
       <p>로그인 화면</p>
