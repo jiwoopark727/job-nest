@@ -39,54 +39,54 @@
 🚀 <a href="https://job-nest-iota.vercel.app" target="_blank" rel="noopener noreferrer"><strong>[JobNest 배포 사이트]</strong></a>
 <br/>
 
-<table margin-top:'30'>
+<table>
   <tr>
     <td align="center">
-      <p>로그인 화면</p>
+      <p><로그인 화면></p>
       <img src="https://raw.githubusercontent.com/jiwoopark727/job-nest/main/src/assets/images/jobnest_login.png" height="250" alt="로그인 화면">
     </td>
     <td align="center">
-      <p>즐겨찾기 화면</p>
+      <p><즐겨찾기 화면></p>
       <img src="https://raw.githubusercontent.com/jiwoopark727/job-nest/main/src/assets/images/jobnest_bookmark.png" height="250" alt="즐겨찾기 화면">
     </td>
   </tr>
   <tr>
     <td align="center">
-      <p>주소검색 화면</p>
+      <p><주소검색 화면></p>
       <img src="https://raw.githubusercontent.com/jiwoopark727/job-nest/main/src/assets/images/jobnest_search.png" height="250" alt="주소검색 화면">
     </td>
     <td align="center">
-      <p>지도 화면</p>
+      <p><지도 화면></p>
       <img src="https://raw.githubusercontent.com/jiwoopark727/job-nest/main/src/assets/images/jobnest_map.png" height="250" alt="지도 화면">
     </td>
   </tr>
   <tr>
     <td align="center">
-      <p>매물관리 화면</p>
+      <p><매물관리 화면></p>
       <img src="https://raw.githubusercontent.com/jiwoopark727/job-nest/main/src/assets/images/jobnest_property.png" height="250" alt="매물관리 화면">
     </td>
     <td align="center">
-      <p>등기대장 화면</p>
+      <p><등기대장 화면></p>
       <img src="https://raw.githubusercontent.com/jiwoopark727/job-nest/main/src/assets/images/jobnest_registration.png" height="250" alt="등기대장 화면">
     </td>
   </tr>
   <tr>
     <td align="center">
-      <p>계약서 화면</p>
+      <p><계약서 화면></p>
       <img src="https://raw.githubusercontent.com/jiwoopark727/job-nest/main/src/assets/images/jobnest_contract.png" height="250" alt="계약서 화면">
     </td>
     <td align="center">
-      <p>즐겨찾기 관리 화면</p>
+      <p><즐겨찾기 관리 화면></p>
       <img src="https://raw.githubusercontent.com/jiwoopark727/job-nest/main/src/assets/images/jobnest_bookmark_manage.png" height="250" alt="즐겨찾기 관리 화면">
     </td>
   </tr>
     <tr>
     <td align="center">
-      <p>구글 캘린더 연동 화면</p>
+      <p><구글 캘린더 연동 화면></p>
       <img src="https://raw.githubusercontent.com/jiwoopark727/job-nest/main/src/assets/images/jobnest_calendar.png" height="250" alt="구글 캘린더 연동 화면">
     </td>
     <td align="center">
-      <p>자체 todo list 화면</p>
+      <p><자체 todo list 화면></p>
       <img src="https://raw.githubusercontent.com/jiwoopark727/job-nest/main/src/assets/images/jobnest_todo.png" height="250" alt="자체 todo list 화면">
     </td>
   </tr>
