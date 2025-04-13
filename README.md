@@ -1,9 +1,13 @@
 # JobNest - 공인중개사용 매물 관리 플랫폼
 
+<br/>
+
 ## 🚀 프로젝트 소개
 
 **JobNest**는 공인중개사들이 기존에 사용하던 낙후된 사이트의 불편함을 해소하고
 기존 사이트들의 기능을 한 데 모아 개발한 공인중개사용 매물 관리 플랫폼입니다.
+
+<br/>
 
 ## 🎯 주요 기능
 
@@ -17,12 +21,16 @@
 - **지도 기능**: KakaoMap API를 사용한 매물 위치와 주변 시설 확인, 핀 스타일 커스텀하여 가시성 상향
 - **등기/대장 열람**: 법적 정보 확인 기능 추가 예정(+ 현재는 더미 데이터를 넣어놓은 상태)
 
+<br/>
+
 ## 🛠 기술 스택
 
 - **Frontend**: `React`, `TypeScript`, `Vite`, `Tailwind CSS`
 - **Backend**: `nods.js`, `AWS`, `MySQL`, `postgresql`
 - **API**: `Google Calendar API`, `KakaoMap API`
 - **Deployment**: `Vercel`
+
+<br/>
 
 ## 🎬 데모 배포 사이트 및 스크린샷
 
@@ -81,6 +89,8 @@
   </tr>
 </table>
 
+<br/>
+
 ## 🏗 프로젝트 구조
 
 ```plaintext
@@ -91,6 +101,8 @@
   ├──📁 types        # 유틸리티 함수
   ├──📁 views        # 페이지 단위 컴포넌트
 ```
+
+<br/>
 
 ## 🔧 설치 및 실행 방법
 
@@ -108,6 +120,8 @@ npm install
 # 개발 서버 실행
 npm run dev
 ```
+
+<br/>
 
 ## 📜 라이선스
 
