@@ -37,7 +37,8 @@
 <br/>
 
 🚀 <a href="https://job-nest-iota.vercel.app" target="_blank" rel="noopener noreferrer"><strong>[JobNest 배포 사이트]</strong></a>
-<br/>
+
+<div style="margin-top: 40px;"></div>
 
 <table>
   <tr>
