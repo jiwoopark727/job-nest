@@ -32,51 +32,51 @@
   <tr>
     <td align="center">
       <p>로그인 화면</p>
-      <img src="./src/assets/images/jobnest_login.png" height="250" alt="로그인 화면">
+      <img src="https://raw.githubusercontent.com/jiwoopark727/job-nest/main/src/assets/images/jobnest_login.png" height="250" alt="로그인 화면">
     </td>
     <td align="center">
       <p>즐겨찾기 화면</p>
-      <img src="./src/assets/images/jobnest_bookmark.png" height="250" alt="즐겨찾기 화면">
+      <img src="https://raw.githubusercontent.com/jiwoopark727/job-nest/main/src/assets/images/jobnest_bookmark.png" height="250" alt="즐겨찾기 화면">
     </td>
   </tr>
   <tr>
     <td align="center">
       <p>주소검색 화면</p>
-      <img src="./src/assets/images/jobnest_search.png" height="250" alt="주소검색 화면">
+      <img src="https://raw.githubusercontent.com/jiwoopark727/job-nest/main/src/assets/images/jobnest_search.png" height="250" alt="주소검색 화면">
     </td>
     <td align="center">
       <p>지도 화면</p>
-      <img src="./src/assets/images/jobnest_map.png" height="250" alt="지도 화면">
+      <img src="https://raw.githubusercontent.com/jiwoopark727/job-nest/main/src/assets/images/jobnest_map.png" height="250" alt="지도 화면">
     </td>
   </tr>
   <tr>
     <td align="center">
       <p>매물관리 화면</p>
-      <img src="./src/assets/images/jobnest_property.png" height="250" alt="매물관리 화면">
+      <img src="https://raw.githubusercontent.com/jiwoopark727/job-nest/main/src/assets/images/jobnest_property.png" height="250" alt="매물관리 화면">
     </td>
     <td align="center">
       <p>등기대장 화면</p>
-      <img src="./src/assets/images/jobnest_registration.png" height="250" alt="등기대장 화면">
+      <img src="https://raw.githubusercontent.com/jiwoopark727/job-nest/main/src/assets/images/jobnest_registration.png" height="250" alt="등기대장 화면">
     </td>
   </tr>
   <tr>
     <td align="center">
       <p>계약서 화면</p>
-      <img src="./src/assets/images/jobnest_contract.png" height="250" alt="계약서 화면">
+      <img src="https://raw.githubusercontent.com/jiwoopark727/job-nest/main/src/assets/images/jobnest_contract.png" height="250" alt="계약서 화면">
     </td>
     <td align="center">
       <p>즐겨찾기 관리 화면</p>
-      <img src="./src/assets/images/jobnest_bookmark_manage.png" height="250" alt="즐겨찾기 관리 화면">
+      <img src="https://raw.githubusercontent.com/jiwoopark727/job-nest/main/src/assets/images/jobnest_bookmark_manage.png" height="250" alt="즐겨찾기 관리 화면">
     </td>
   </tr>
     <tr>
     <td align="center">
       <p>구글 캘린더 연동 화면</p>
-      <img src="./src/assets/images/jobnest_calendar.png" height="250" alt="구글 캘린더 연동 화면">
+      <img src="https://raw.githubusercontent.com/jiwoopark727/job-nest/main/src/assets/images/jobnest_calendar.png" height="250" alt="구글 캘린더 연동 화면">
     </td>
     <td align="center">
       <p>자체 todo list 화면</p>
-      <img src="./src/assets/images/jobnest_todo.png" height="250" alt="자체 todo list 화면">
+      <img src="https://raw.githubusercontent.com/jiwoopark727/job-nest/main/src/assets/images/jobnest_todo.png" height="250" alt="자체 todo list 화면">
     </td>
   </tr>
 </table>
