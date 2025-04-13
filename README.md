@@ -34,8 +34,9 @@
 
 ## 🎬 데모 배포 사이트 및 스크린샷
 
+<br/>
 🚀 <a href="https://job-nest-iota.vercel.app" target="_blank" rel="noopener noreferrer"><strong>[JobNest 배포 사이트]</strong></a>
-
+<br/>
 <table>
   <tr>
     <td align="center">
